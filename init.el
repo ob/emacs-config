@@ -19,6 +19,7 @@
 (require 'init-company-mode)
 (require 'init-rust)
 (require 'init-git)
+(require 'init-ob)
 
 (provide 'init)
 (custom-set-variables
@@ -28,7 +29,8 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell))))
+    (magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+ '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
