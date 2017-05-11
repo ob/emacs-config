@@ -1,3 +1,6 @@
+;;; Package -- Summary
+;;; Commentary:
+;;; Code:
 (require 'init-elpa)
 (require 'saveplace)
 (require-package 'rainbow-delimiters)
@@ -44,3 +47,4 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 
 (provide 'init-editing)
+;;; init-editing ends here

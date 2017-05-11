@@ -1,3 +1,6 @@
+;;; Package -- init-ui
+;;; Commentary:
+;;; Code:
 (require 'init-elpa)
 (require-package 'atom-one-dark-theme)
 (require-package 'golden-ratio)
@@ -12,7 +15,7 @@
   (scroll-bar-mode -1))
 
 (set-face-attribute 'default nil :height 140)
-(setq-default line-spacing 0.4)
+;;; (setq-default line-spacing 0.4)
 
 (setq
       x-select-enable-clipboard t
@@ -24,11 +27,12 @@
 (load-theme 'atom-one-dark t)
 
 (blink-cursor-mode 0)
-(setq-default cursor-type 'bar)
+(setq-default cursor-type 'box)
 (set-cursor-color "#cccccc")
 (setq ring-bell-function 'ignore)
 
-(golden-ratio-mode 1)
+;; Not sure I like it
+;; (golden-ratio-mode 1)
 
 (provide 'init-ui)
-
+;;; init-ui ends here
