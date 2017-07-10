@@ -1,3 +1,6 @@
+;;; init-elpa -- init elpa mode
+;;; Commentary:
+;;; Code:
 (require 'package)
 
 (defun require-package (package)
@@ -15,3 +18,4 @@
 (package-initialize)
 
 (provide 'init-elpa)
+;;; init-elpa ends here

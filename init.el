@@ -19,7 +19,22 @@
 (require 'init-company-mode)
 (require 'init-rust)
 (require 'init-git)
+(require 'init-ediff)
 (require 'init-ob)
+
+;; This next section from: https://tuhdo.github.io/c-ide.html
+(require-package 'use-package)
+(setq use-package-always-ensure t)
+(add-to-list 'load-path "~/.emacs.d/c++")
+(require 'setup-general)
+(if (version< emacs-version "24.4")
+    (require 'setup-ivy-counsel)
+  (require 'setup-helm)
+  (require 'setup-helm-gtags))
+;; (require 'setup-ggtags)
+(require 'setup-cedet)
+(require 'setup-editing)
+
 
 (provide 'init)
 (custom-set-variables
@@ -36,5 +51,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(ediff-current-diff-C ((t (:background "midnight blue"))))
+ '(ediff-even-diff-A ((t (:background "dim gray"))))
+ '(ediff-even-diff-B ((t (:background "dim gray"))))
+ '(ediff-even-diff-C ((t (:background "dim gray"))))
+ '(ediff-fine-diff-B ((t (:background "dark green"))))
+ '(ediff-fine-diff-C ((t (:background "dark slate blue"))))
+ '(ediff-odd-diff-A ((t (:background "dim gray"))))
+ '(ediff-odd-diff-Ancestor ((t (:background "dim gray"))))
+ '(ediff-odd-diff-B ((t (:background "dim gray"))))
+ '(ediff-odd-diff-C ((t (:background "dim gray")))))
 ;;; init.el ends here

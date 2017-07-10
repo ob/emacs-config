@@ -55,6 +55,11 @@
 
 (define-key global-map (kbd "C-;") 'iedit-mode)
 
+(setq ediff-split-window-function 'split-window-horizontally)
+;; don't start a new frame
+
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
 
 (provide 'init-ob)
 ;;; init-ob ends here

@@ -10,3 +10,5 @@ auto-save-list
 backups
 elpa/
 eshell
+semanticdb
+/ede-projects.el

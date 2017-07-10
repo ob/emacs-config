@@ -1,4 +1,4 @@
-;;; Package -- Summary
+;;; init-editing -- init editing mode
 ;;; Commentary:
 ;;; Code:
 (require 'init-elpa)
