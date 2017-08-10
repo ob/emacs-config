@@ -15,6 +15,7 @@
 (require 'init-ui)
 (require 'init-editing)
 (require 'init-navigation)
+(require 'init-markdown-mode)
 (require 'init-miscellaneous)
 (require 'init-company-mode)
 (require 'init-rust)
@@ -44,7 +45,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+    (markdown-mode markdown-mode+ magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
  '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
