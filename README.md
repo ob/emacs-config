@@ -3,11 +3,21 @@ My `.emacs` configuration files.
 
 # Installing
 
-I use [Hack](http://sourcefoundry.org/hack/) as my default font so you need to have it installed. 
+## The Easy Way
+
+```
+curl -sL https://raw.githubusercontent.com/ob/emacs-config/master/scripts/install.sh | bash
+```
+
+## The Hard Way
+
+I use [Hack](http://sourcefoundry.org/hack/) and/or [Inconsolata](http://levien.com/type/myfonts/inconsolata.html) 
+as my default font so you need to have it installed. 
+
 The easiest way is to use [HomeBrew](https://brew.sh) and then type:
 
 ```
-$ brew cask install font-hack
+$ brew cask install font-hack font-inconsolata
 ```
 
 You also need Emacs installed, I use `emacs-mac`. You can install it like so:
@@ -21,6 +31,12 @@ After that, clone this repository to your `~/.emacs.d` directory:
 
 ```
 $ git clone https://github.com/ob/emacs-config.git ~/.emacs.d
+```
+
+Then link the `.emacs_bash` script:
+
+```
+ln -s ~/.emacs.d/config-files/emacs_bash.sh ~/.emacs_bash
 ```
 
 Finally, open Emacs using the open command:
