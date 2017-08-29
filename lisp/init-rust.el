@@ -1,3 +1,7 @@
+;;; rust -- init-rust.el
+;;; Commentary:
+;;; Code:
+
 (require 'init-elpa)
 (require-package 'company)
 (require-package 'racer)
@@ -26,3 +30,4 @@
 	     (electric-pair-mode 1)))
 
 (provide 'init-rust)
+;;; init-rust ends here

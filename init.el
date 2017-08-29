@@ -18,11 +18,14 @@
 (require 'init-markdown-mode)
 (require 'init-miscellaneous)
 (require 'init-company-mode)
-(require 'init-rust)
 (require 'init-git)
 (require 'init-ediff)
 (require 'init-ob)
 
+;; Languages
+(require 'init-rust)
+(require 'init-groovy)
+;; C++ is special
 ;; This next section from: https://tuhdo.github.io/c-ide.html
 (require-package 'use-package)
 (setq use-package-always-ensure t)
