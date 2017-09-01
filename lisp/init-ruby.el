@@ -4,6 +4,8 @@
 
 (require 'init-elpa)
 (require-package 'ruby-mode)
+(require-package 'flycheck)
+(require-package 'yaml-mode)
 
 
 (provide 'init-ruby)

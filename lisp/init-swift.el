@@ -4,6 +4,7 @@
 
 (require 'init-elpa)
 (require-package 'swift-mode)
+(require-package 'flycheck)
 (require-package 'flycheck-swift)
 
 
