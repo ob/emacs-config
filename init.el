@@ -26,6 +26,7 @@
 (require 'init-groovy)
 (require 'init-ruby)
 (require 'init-rust)
+(require 'init-swift)
 ;; C++ is special
 ;; This next section from: https://tuhdo.github.io/c-ide.html
 (require-package 'use-package)
