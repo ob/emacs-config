@@ -23,8 +23,9 @@
 (require 'init-ob)
 
 ;; Languages
-(require 'init-rust)
 (require 'init-groovy)
+(require 'init-ruby)
+(require 'init-rust)
 ;; C++ is special
 ;; This next section from: https://tuhdo.github.io/c-ide.html
 (require-package 'use-package)
