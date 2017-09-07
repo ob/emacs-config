@@ -23,6 +23,7 @@
 (require 'init-ob)
 
 ;; Languages
+(require 'init-elm)
 (require 'init-groovy)
 (require 'init-ruby)
 (require 'init-rust)
