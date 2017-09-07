@@ -16,6 +16,6 @@
 	     '("melpa" . "https://melpa.org/packages/"))
 
 (package-initialize)
-
+(package-refresh-contents)
 (provide 'init-elpa)
 ;;; init-elpa ends here
