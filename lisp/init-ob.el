@@ -7,6 +7,7 @@
 (require-package 'session)
 (require-package 'iedit)
 
+(desktop-save-mode 1)
 
 ;; Disable tramp (We hates it my preciousss, yes we do)
 (setq tramp-mode nil)

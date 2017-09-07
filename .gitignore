@@ -12,3 +12,5 @@ elpa/
 eshell
 semanticdb
 /ede-projects.el
+/.emacs.desktop
+/.emacs.desktop.lock
