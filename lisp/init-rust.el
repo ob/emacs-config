@@ -8,6 +8,7 @@
 (require-package 'rust-mode)
 (require-package 'flycheck)
 (require-package 'flycheck-rust)
+(require-package 'toml-mode)
 
 (require 'company)
 (require 'racer)
