@@ -31,7 +31,18 @@ test -d ~/.emacs.d && mv ~/.emacs.d ~/.emacs.d.`date +%Y-%m-%d`.old
 git clone git@github.com:ob/emacs-config.git ~/.emacs.d
 
 msg_status "Linking config files"
-ln -s ~/.emacs.d/config-files/emacs_bash.sh ~/.emacs_bash
+(
+  cd ~/.emacs.d/config-files/ ;
+  for file in *
+  do
+    if [ $file == "gitconfig" ]; then
+        cat $file >> ~/.$file
+    elif [ ! -f ~/.$file ]; then
+        ln -s "$file" ~/."$file" 
+    else
+    fi
+  done
+)
 
 msg_status "Opening Emacs to finish installation"
 open /Applications/Emacs.app
