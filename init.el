@@ -25,6 +25,7 @@
 ;; Languages
 (require 'init-elm)
 (require 'init-groovy)
+(require 'init-python)
 (require 'init-ruby)
 (require 'init-rust)
 (require 'init-swift)
@@ -51,7 +52,88 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yaml-mode markdown-mode markdown-mode+ magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+    (go-add-tags go-autocomplete go-complete go-direx go-dlv go-eldoc go-errcheck go-fill-struct go-gen-test go-gopath go-guru go-impl go-imports go-mode go-playground go-playground-cli go-projectile go-rename go-scratch go-snippets go-stacktracer go-tag jinja2-mode bazel-mode cmake-font-lock cmake-ide cmake-mode cmake-project cpputils-cmake toml-mode better-defaults company-sourcekit yaml-mode markdown-mode markdown-mode+ magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+ '(safe-local-variable-values
+   (quote
+    ((flycheck-clang-language-standard . c++14)
+     (eval if
+           (assoc "llbuild" c-style-alist)
+           (c-set-style "llbuild"))
+     (eval unless
+           (featurep
+            (quote llbuild-project-settings))
+           (message "loading 'llbuild-project-settings")
+           (add-to-list
+            (quote load-path)
+            (concat
+             (let
+                 ((dlff
+                   (dir-locals-find-file default-directory)))
+               (if
+                   (listp dlff)
+                   (car dlff)
+                 (file-name-directory dlff)))
+             "utils/emacs")
+            :append)
+           (require
+            (quote llbuild-project-settings)))
+     (eval unless
+           (featurep
+            (quote swiftpm-project-settings))
+           (message "loading 'swiftpm-project-settings")
+           (add-to-list
+            (quote load-path)
+            (concat
+             (let
+                 ((dlff
+                   (dir-locals-find-file default-directory)))
+               (if
+                   (listp dlff)
+                   (car dlff)
+                 (file-name-directory dlff)))
+             "Utilities/Emacs")
+            :append)
+           (require
+            (quote swiftpm-project-settings)))
+     (tab-always-indent . t)
+     (swift-basic-offset . 2)
+     (swift-syntax-check-fn . swift-project-swift-syntax-check)
+     (swift-find-executable-fn . swift-project-executable-find)
+     (whitespace-style face lines indentation:space)
+     (eval add-hook
+           (quote prog-mode-hook)
+           (lambda nil
+             (whitespace-mode 1))
+           (not :APPEND)
+           :BUFFER-LOCAL)
+     (eval let*
+           ((x
+             (dir-locals-find-file default-directory))
+            (this-directory
+             (if
+                 (listp x)
+                 (car x)
+               (file-name-directory x))))
+           (unless
+               (or
+                (featurep
+                 (quote swift-project-settings))
+                (and
+                 (fboundp
+                  (quote tramp-tramp-file-p))
+                 (tramp-tramp-file-p this-directory)))
+             (add-to-list
+              (quote load-path)
+              (concat this-directory "utils")
+              :append)
+             (let
+                 ((swift-project-directory this-directory))
+               (require
+                (quote swift-project-settings))))
+           (set
+            (make-local-variable
+             (quote swift-project-directory))
+            this-directory)))))
  '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
