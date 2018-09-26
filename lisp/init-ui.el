@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 (require 'init-elpa)
+(require-package 'color-theme-sanityinc-tomorrow)
 (require-package 'atom-one-dark-theme)
 (require-package 'golden-ratio)
 
@@ -24,7 +25,8 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-(load-theme 'atom-one-dark t)
+;; (load-theme 'atom-one-dark t)
+(load-theme 'sanityinc-tomorrow-bright t)
 
 (blink-cursor-mode 0)
 (setq-default cursor-type 'box)

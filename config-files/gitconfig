@@ -1,0 +1,2 @@
+[alias]
+        l = log --graph --decorate --format='%C(auto)%h%Creset %C(auto)%d%Creset %C(cyan)%an%Creset %s'

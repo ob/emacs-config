@@ -49,9 +49,50 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-bright)))
+ '(custom-safe-themes
+   (quote
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" default)))
  '(package-selected-packages
    (quote
-    (yaml-mode markdown-mode markdown-mode+ magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+    (color-theme-sanityinc-tomorrow-bright color-theme-sanityinc-tomorrow bazel-mode cmake-font-lock cmake-ide cmake-mode cmake-project cpputils-cmake yaml-mode markdown-mode markdown-mode+ magit sanityinc-tomorrow-night flycheck-rust racer company projectile smex ido-ubiquitous flycheck rainbow-delimiters golden-ratio atom-one-dark-theme exec-path-from-shell)))
+ '(safe-local-variable-values
+   (quote
+    ((eval add-hook
+           (quote prog-mode-hook)
+           (lambda nil
+             (whitespace-mode 1))
+           (not :APPEND)
+           :BUFFER-LOCAL)
+     (whitespace-style face lines indentation:space)
+     (eval let*
+           ((x
+             (dir-locals-find-file default-directory))
+            (this-directory
+             (if
+                 (listp x)
+                 (car x)
+               (file-name-directory x))))
+           (unless
+               (or
+                (featurep
+                 (quote swift-project-settings))
+                (and
+                 (fboundp
+                  (quote tramp-tramp-file-p))
+                 (tramp-tramp-file-p this-directory)))
+             (add-to-list
+              (quote load-path)
+              (concat this-directory "utils")
+              :append)
+             (let
+                 ((swift-project-directory this-directory))
+               (require
+                (quote swift-project-settings))))
+           (set
+            (make-local-variable
+             (quote swift-project-directory))
+            this-directory)))))
  '(session-use-package t nil (session)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
