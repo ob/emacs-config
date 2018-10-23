@@ -46,9 +46,8 @@ msg_status "Linking config files"
   cd ~/.emacs.d/config-files/ ;
   for file in *
   do
-    if [ $file == "gitconfig" ]; then
-        cat $file >> ~/.$file
-    elif [ ! -L ~/.$file ]; then
+    if [ ! -L ~/.$file ]; then
+        test -e ~/.$file && mv ~/.$file ~/.$file.$$.old
         ln -s "$file" ~/."$file" 
     fi
   done
