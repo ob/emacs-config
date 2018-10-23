@@ -43,14 +43,15 @@ fi
 
 msg_status "Linking config files"
 (
-  cd ~/.emacs.d/config-files/ ;
-  for file in *
-  do
-    if [ ! -L ~/.$file ]; then
-        test -e ~/.$file && mv ~/.$file ~/.$file.$$.old
-        ln -s "$file" ~/."$file" 
-    fi
-  done
+    cd  $HOME;
+    for file in .emacs.d/config-files/*
+    do
+        dotFile=~/.$(basename $file)
+        test -L $dotFile && rm -f $dotFile
+        test -e $dotFile && mv $dotFile $dotFile.$$.old
+        echo "Linking $dotFile -> $file"
+        ln -s "$file" $dotFile
+    done
 )
 
 msg_status "Opening Emacs to finish installation"
