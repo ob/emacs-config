@@ -27,8 +27,19 @@ msg_status "Installing necessary brew packages"
 brew install global htop jq ripgrep
 
 msg_status "Cloning emacs-config"
-test -d ~/.emacs.d && mv ~/.emacs.d ~/.emacs.d.`date +%Y-%m-%d`.old
-git clone git@github.com:ob/emacs-config.git ~/.emacs.d
+
+if [ -d ~/.emacs.d ]
+then
+  if [ -d ~/.emacs.d/.git ]
+  then
+    (cd ~/.emacs.d && git pull --tags)
+  else
+    mv ~/.emacs.d ~/.emacs.d.`date +%Y-%m-%d`-$$.old
+    git clone git@github.com:ob/emacs-config.git ~/.emacs.d
+  fi
+else
+  git clone git@github.com:ob/emacs-config.git ~/.emacs.d
+fi
 
 msg_status "Linking config files"
 (
