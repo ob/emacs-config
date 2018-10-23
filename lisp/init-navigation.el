@@ -5,7 +5,7 @@
 (require 'init-elpa)
 (require 'ido)
 (require 'recentf)
-(require-package 'ido-ubiquitous)
+;;(require-package 'ido-ubiquitous)
 (require-package 'smex)
 (require-package 'projectile)
 
@@ -19,7 +19,7 @@
 (setq ido-auto-merge-work-directories-length -1)
 (setq ido-use-virtual-buffers t)
 
-(ido-ubiquitous-mode 1)
+;;(ido-ubiquitous-mode 1)
 
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
