@@ -17,8 +17,7 @@ command -v brew >/dev/null 2>&1 || {
 
 msg_status "Installing Emacs"
 brew tap railwaycat/emacsmacport
-brew install emacs-mac
-brew linkapps emacs-mac
+brew cask install emacs-mac
 
 msg_status "Installing necessary fonts"
 brew tap caskroom/fonts
