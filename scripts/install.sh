@@ -48,7 +48,7 @@ msg_status "Linking config files"
   do
     if [ $file == "gitconfig" ]; then
         cat $file >> ~/.$file
-    elif [ ! -e ~/.$file ]; then
+    elif [ ! -L ~/.$file ]; then
         ln -s "$file" ~/."$file" 
     fi
   done
