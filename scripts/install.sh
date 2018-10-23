@@ -1,11 +1,11 @@
 #!/bin/sh
 
 msg_status() {
-	echo "\033[0;32m-- $1\033[0m"
+	printf "\033[0;32m-- $1\033[0m\n"
 }
 
 msg_error() {
-	echo "\033[0;31m-- $1\033[0m"
+	printf "\033[0;31m-- $1\033[0m\n"
 }
 
 command -v brew >/dev/null 2>&1 || {
@@ -39,7 +39,6 @@ msg_status "Linking config files"
         cat $file >> ~/.$file
     elif [ ! -f ~/.$file ]; then
         ln -s "$file" ~/."$file" 
-    else
     fi
   done
 )
