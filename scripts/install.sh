@@ -23,9 +23,8 @@ msg_status "Installing necessary fonts"
 brew tap caskroom/fonts
 brew cask install font-inconsolata font-hack
 
-
 msg_status "Installing necessary brew packages"
-brew install global htop jq
+brew install global htop jq ripgrep
 
 msg_status "Cloning emacs-config"
 test -d ~/.emacs.d && mv ~/.emacs.d ~/.emacs.d.`date +%Y-%m-%d`.old
@@ -45,4 +44,6 @@ msg_status "Linking config files"
 )
 
 msg_status "Opening Emacs to finish installation"
+# whitelist the Emacs app.
+xattr -d -r com.apple.quarantine
 open /Applications/Emacs.app
