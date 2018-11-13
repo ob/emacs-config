@@ -26,7 +26,7 @@
       mouse-yank-at-point t)
 
 ;; (load-theme 'atom-one-dark t)
-(load-theme 'sanityinc-tomorrow-bright t)
+(load-theme 'sanityinc-tomorrow-day t)
 
 (blink-cursor-mode 0)
 (setq-default cursor-type 'box)

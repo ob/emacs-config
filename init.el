@@ -20,7 +20,7 @@
 (require 'init-company-mode)
 (require 'init-git)
 (require 'init-ediff)
-(require 'init-jira)
+;(require 'init-jira)
 (require 'init-ob)
 
 ;; Languages
