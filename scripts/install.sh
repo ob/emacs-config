@@ -29,7 +29,7 @@ install_emacs_Darwin() {
 }
 
 install_emacs_Linux() {
-  sudo apt install -y emacs
+  sudo apt install -y emacs25
 }
 
 clone_emacs_config_repo() {
