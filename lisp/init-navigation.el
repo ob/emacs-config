@@ -5,7 +5,7 @@
 (require 'init-elpa)
 (require 'ido)
 (require 'recentf)
-(require-package 'ido-ubiquitous)
+(require-package 'ido-completing-read+)
 (require-package 'smex)
 (require-package 'projectile)
 

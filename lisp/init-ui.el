@@ -25,7 +25,7 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-;; (load-theme 'atom-one-dark t)
+;;(load-theme 'atom-one-dark t)
 (load-theme 'sanityinc-tomorrow-bright t)
 
 (blink-cursor-mode 0)

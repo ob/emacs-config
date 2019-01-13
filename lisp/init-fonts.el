@@ -5,8 +5,13 @@
 ;; (set-frame-font
 ;;  "-*-Hack-normal-normal-normal-*-11-*-*-*-m-0-iso10646-1" nil t)
 
+;; (set-frame-font
+;;  "-apple-Inconsolata-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)
+
 (set-frame-font
-  "-apple-Inconsolata-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)
+ "-*-Fira Code-normal-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)
+
+(mac-auto-operator-composition-mode)
 
 (provide 'init-fonts)
 ;;; init-fonts ends here
