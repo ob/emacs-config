@@ -1,0 +1,6 @@
+[user]
+  email = 6f6231@gmail.com
+  name = Oscar Bonilla
+  signingkey = 4E597255F4AAB289B598906DA91FDAA6D10F161B
+[commit]
+  gpgsign = true
