@@ -1,6 +1,7 @@
 [user]
-    email = 6f6231@gmail.com
+	email = 6f6231@gmail.com
     user = Oscar Bonilla
+	name = Oscar Bonilla
 [alias]
 #        l = log --graph --decorate --oneline --all
 #        l = log --graph --decorate --format='%C(auto)%h%Creset %G? %C(auto)%d%Creset %C(cyan)%an%Creset %s'
