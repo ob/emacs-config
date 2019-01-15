@@ -22,7 +22,7 @@ install_emacs_Darwin() {
 
   msg_status "Installing necessary fonts"
   brew tap caskroom/fonts
-  brew cask install font-inconsolata font-hack
+  brew cask install font-fira-code font-inconsolata font-hack
 
   msg_status "Installing necessary brew packages"
   brew install global htop jq ripgrep
