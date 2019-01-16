@@ -1,26 +1,28 @@
 [user]
-	email = 6f6231@gmail.com
+    email = 6f6231@gmail.com
     user = Oscar Bonilla
-	name = Oscar Bonilla
+    name = Oscar Bonilla
 [alias]
-#        l = log --graph --decorate --oneline --all
-#        l = log --graph --decorate --format='%C(auto)%h%Creset %G? %C(auto)%d%Creset %C(cyan)%an%Creset %s'
-	l = log --graph --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%cr%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
-        lng = log --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%ar%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
-	root = rev-parse --show-toplevel
-	unedit = checkout HEAD --
+#    l = log --graph --decorate --oneline --all
+#    l = log --graph --decorate --format='%C(auto)%h%Creset %G? %C(auto)%d%Creset %C(cyan)%an%Creset %s'
+    l = log --graph --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%cr%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
+    lng = log --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%ar%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
+    root = rev-parse --show-toplevel
+    unedit = checkout HEAD --
 [core]
-	excludesfile = /Users/obonilla/.gitignore
+    excludesfile = /Users/obonilla/.gitignore
+[push]
+    followTags = true
 [includeIf "gitdir:~/o/"]
-  path = .gitconfig-opensource
+    path = .gitconfig-opensource
 [includeIf "gitdir:~/r/"]
-  path = .gitconfig-linkedin
+    path = .gitconfig-linkedin
 [includeIf "gitdir:~/m/"]
-  path = .gitconfig-microsoft
+    path = .gitconfig-microsoft
 [includeIf "gitdir:~/p/"]
-  path = .gitconfig-opensource
+    path = .gitconfig-opensource
 [diff]
-	tool = opendiff
-	wsErrorHighlight = all
+    tool = opendiff
+    wsErrorHighlight = all
 [receive]
-	denyCurrentBranch = warn
+    denyCurrentBranch = warn
