@@ -7,6 +7,9 @@
 (require-package 'session)
 (require-package 'iedit)
 
+(if (eq window-system 'x)
+    (setq x-alt-keysym 'meta))
+
 (desktop-save-mode 1)
 
 ;; Disable tramp (We hates it my preciousss, yes we do)
