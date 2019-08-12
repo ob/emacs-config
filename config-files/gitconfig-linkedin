@@ -1,4 +1,7 @@
 [user]
   email = obonilla@linkedin.com
   name = Oscar Bonilla
-
+# [merge]
+#     tool = meld
+# [mergetool "meld"]
+#     cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"

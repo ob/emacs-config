@@ -5,8 +5,9 @@
 [alias]
 #    l = log --graph --decorate --oneline --all
 #    l = log --graph --decorate --format='%C(auto)%h%Creset %G? %C(auto)%d%Creset %C(cyan)%an%Creset %s'
-    l = log --graph --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%cr%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
+    l = log --graph --decorate --format='%C(auto,bold)%h%C(auto,reset) %G? %C(auto,bold blue)%<(12,trunc)%cr%C(auto,reset) %C(auto,normal)%d%C(auto,reset) %C(auto,cyan)%<(14,trunc)%an%C(auto,reset) %s'
     lng = log --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%ar%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
+    cl = log --format='  * %h %s'
     root = rev-parse --show-toplevel
     unedit = checkout HEAD --
 [core]
@@ -26,3 +27,5 @@
     wsErrorHighlight = all
 [receive]
     denyCurrentBranch = warn
+[http]
+	cookiefile = /Users/obonilla/.gitcookies

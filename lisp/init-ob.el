@@ -61,6 +61,11 @@
 
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(setq show-trailing-whitespace 't)
+
+;; not working?
+(add-hook 'diff-mode-hook (lambda ()
+                       (whitespace-mode 0)))
 
 (provide 'init-ob)
 ;;; init-ob ends here

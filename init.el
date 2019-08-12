@@ -23,9 +23,15 @@
 ;(require 'init-jira)
 (require 'init-ob)
 
+;; Fix environment
+(require-package 'exec-path-from-shell)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 ;; Languages
 (require 'init-elm)
 (require 'init-groovy)
+(require 'init-go)
 (require 'init-python)
 (require 'init-ruby)
 (require 'init-rust)
@@ -44,9 +50,11 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 
+
 ;; Save local customizations in a per-machine file
 (setq custom-file "~/.emacs-custom.el")
 (load custom-file)
+
 
 (provide 'init)
 ;;; init.el ends here
