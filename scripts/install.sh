@@ -25,7 +25,7 @@ install_emacs_Darwin() {
   brew install font-fira-code font-inconsolata font-hack
 
   msg_status "Installing necessary brew packages"
-  brew install global htop jq ripgrep
+  brew install htop jq ripgrep
 }
 
 install_emacs_Linux() {
