@@ -18,11 +18,11 @@ install_emacs_Darwin() {
 
   msg_status "Installing Emacs"
   brew tap railwaycat/emacsmacport
-  brew cask install emacs-mac
+  brew install emacs-mac
 
   msg_status "Installing necessary fonts"
   brew tap caskroom/fonts
-  brew cask install font-fira-code font-inconsolata font-hack
+  brew install font-fira-code font-inconsolata font-hack
 
   msg_status "Installing necessary brew packages"
   brew install global htop jq ripgrep
