@@ -17,7 +17,7 @@ install_emacs_Darwin() {
   }
 
   msg_status "Installing Emacs"
-  brew tap railwaycat/emacsmacport/emacs-mac
+  brew tap railwaycat/emacsmacport
   brew install --cask emacs-mac
 
   msg_status "Installing necessary fonts"
