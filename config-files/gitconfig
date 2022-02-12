@@ -14,6 +14,8 @@
     excludesfile = /Users/obonilla/.gitignore
 [push]
     followTags = true
+[pull]
+	rebase = false
 [includeIf "gitdir:~/o/"]
     path = .gitconfig-opensource
 [includeIf "gitdir:~/r/"]

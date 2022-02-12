@@ -1,6 +1,9 @@
 [user]
   email = obonilla@linkedin.com
   name = Oscar Bonilla
+[pull]
+  rebase = true
+
 # [merge]
 #     tool = meld
 # [mergetool "meld"]
