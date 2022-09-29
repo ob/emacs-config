@@ -5,7 +5,6 @@
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 ;;; Code:
-(package-initialize)
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
