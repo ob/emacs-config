@@ -67,7 +67,7 @@ link_config_files() {
 run_emacs_Darwin() {
   msg_status "Opening Emacs to finish installation"
   # whitelist the Emacs app.
-  xattr -d -r com.apple.quarantine
+  xattr -d -r com.apple.quarantine /Applications/Emacs.app
   open /Applications/Emacs.app
 }
 
