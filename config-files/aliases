@@ -20,3 +20,4 @@ alias ntop="sudo jnettop -i en1"
 alias rg="rg --color always"
 alias rvm-restart="rvm_reload_flag=1 source "\""$HOME/.rvm/scripts/rvm"\"""
 alias vi=/Applications/MacVim.app/Contents/bin/vim
+alias k=kubectl

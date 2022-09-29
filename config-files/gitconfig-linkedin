@@ -1,6 +1,20 @@
 [user]
   email = obonilla@linkedin.com
   name = Oscar Bonilla
+[pull]
+  rebase = true
+
+[core]
+  editor = code --wait
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
 # [merge]
 #     tool = meld
 # [mergetool "meld"]
