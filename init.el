@@ -28,7 +28,6 @@
   (exec-path-from-shell-initialize))
 
 ;; Languages
-(require 'init-elm)
 (require 'init-groovy)
 (require 'init-go)
 (require 'init-python)

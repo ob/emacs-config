@@ -32,3 +32,5 @@
     denyCurrentBranch = warn
 [http]
 	cookiefile = /Users/obonilla/.gitcookies
+[init]
+	defaultBranch = main
