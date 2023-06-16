@@ -10,6 +10,10 @@
     cl = log --format='  * %h %s'
     root = rev-parse --show-toplevel
     unedit = checkout HEAD --
+    co = checkout
+    s = status
+    b = branch
+    sc = sparse-checkout
 [core]
     excludesfile = /Users/obonilla/.gitignore
 [push]
@@ -34,3 +38,7 @@
 	cookiefile = /Users/obonilla/.gitcookies
 [init]
 	defaultBranch = main
+[gc]
+	auto = 0
+[fetch]
+	showForcedUpdates = true

@@ -1,6 +1,5 @@
 alias code="/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias emacs="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -t"
-alias gpg="gpg2"
 alias grep="grep --color=always"
 alias imgcat="$HOME/.iterm2/imgcat"
 alias imgls="$HOME/.iterm2/imgls"
