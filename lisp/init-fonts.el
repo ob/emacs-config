@@ -10,7 +10,7 @@
 
 (if (or (eq window-system 'ns) (eq window-system 'mac))
     (set-frame-font
-     "-apple-Inconsolata-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1" nil t)
+     "-apple-Inconsolata-medium-normal-normal-*-16-*-*-*-m-0-iso10646-1" nil t)
   (mac-auto-operator-composition-mode))
 
 (provide 'init-fonts)

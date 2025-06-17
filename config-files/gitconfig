@@ -5,20 +5,41 @@
 [alias]
 #    l = log --graph --decorate --oneline --all
 #    l = log --graph --decorate --format='%C(auto)%h%Creset %G? %C(auto)%d%Creset %C(cyan)%an%Creset %s'
-    l = log --graph --decorate --format='%C(auto,bold)%h%C(auto,reset) %G? %C(auto,bold blue)%<(12,trunc)%cr%C(auto,reset) %C(auto,normal)%d%C(auto,reset) %C(auto,cyan)%<(14,trunc)%an%C(auto,reset) %s'
+    l = log --graph --decorate --format='%C(auto,bold)%h%C(auto,reset) %C(auto,bold blue)%<(12,trunc)%cr%C(auto,reset) %C(auto,normal)%d%C(auto,reset) %C(auto,cyan)%<(14,trunc)%an%C(auto,reset) %s'
     lng = log --decorate --format='%C(auto)%h%C(auto,reset) %G? %C(auto,bold blue)%ar%C(auto,reset) %C(auto)%d%C(auto,reset) %C(auto,cyan)%an%C(auto,reset) %s'
     cl = log --format='  * %h %s'
     root = rev-parse --show-toplevel
     unedit = checkout HEAD --
     co = checkout
-    s = status
+    d = diff
+    p = pull
+    s = status -su
+    st = status
     b = branch
+    br = branch
     sc = sparse-checkout
+    t = tag
+	append = town append
+	compress = town compress
+	contribute = town contribute
+	diff-parent = town diff-parent
+	hack = town hack
+	kill = town kill
+	observe = town observe
+	park = town park
+	prepend = town prepend
+	propose = town propose
+	rename-branch = town rename-branch
+	repo = town repo
+	set-parent = town set-parent
+	ship = town ship
+	sync = town sync
 [core]
     excludesfile = /Users/obonilla/.gitignore
 [push]
     followTags = true
 	default = current
+	autoSetupRemote = true
 [pull]
 	rebase = false
 [includeIf "gitdir:~/o/"]
@@ -42,3 +63,20 @@
 	auto = 0
 [fetch]
 	showForcedUpdates = true
+[scalar]
+	repo = /Users/obonilla/r/test-macrorepo-tools
+	repo = /Users/obonilla/mr/src
+	repo = /Users/obonilla/mr/tools
+	repo = /Users/obonilla/mr/base
+	repo = /Users/obonilla/r/test-macrorepo-60pct
+[maintenance]
+	repo = /Users/obonilla/r/test-macrorepo-tools
+	repo = /Users/obonilla/mr/src
+	repo = /Users/obonilla/mr/tools
+	repo = /Users/obonilla/mr/base
+	repo = /Users/obonilla/r/test-macrorepo-60pct
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

@@ -1,6 +1,7 @@
 [user]
   email = obonilla@linkedin.com
   name = Oscar Bonilla
+
 [pull]
   rebase = true
 
@@ -8,6 +9,8 @@
   editor = code --wait
 [diff]
   tool = vscode
+ colormoved = "default"
+ colormovedws = "allow-indentation-change"
 [difftool "vscode"]
   cmd = code --wait --diff $LOCAL $REMOTE
 [merge]

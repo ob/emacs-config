@@ -48,6 +48,37 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 
+(use-package undo-tree
+  :ensure t
+  :init
+  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/")))
+  (setq undo-tree-auto-save-history t)
+  :config
+  (global-undo-tree-mode 1))
+
+;; Save autosaves to a consistent directory
+(setq auto-save-file-name-transforms
+      `((".*" "~/.emacs.d/auto-save/" t)))
+
+;; Ensure autosave is on for *all* buffers
+(setq auto-save-default t)
+(setq auto-save-timeout 20)   ; seconds idle before autosave
+(setq auto-save-interval 200) ; keystrokes before autosave
+
+(defun sanitize-buffer-name (name)
+  "Return a safe filename based on buffer NAME."
+  (replace-regexp-in-string "[^a-zA-Z0-9_-]" "_" name))
+
+;; Auto-save even for new unnamed buffers
+(defun force-buffer-auto-save ()
+  "Enable autosaving for buffers with no associated file, using a temp file named after the buffer."
+  (unless buffer-file-name
+    (let* ((safe-name (sanitize-buffer-name (buffer-name)))
+           (tmpfile (make-temp-file (concat "emacs-unsaved-" safe-name "-"))))
+      (setq buffer-file-name tmpfile)))
+  (auto-save-mode 1))
+
+(add-hook 'after-change-major-mode-hook #'force-buffer-auto-save)
 
 ;; Save local customizations in a per-machine file
 (setq custom-file "~/.emacs-custom.el")
