@@ -21,7 +21,6 @@ install_emacs_Darwin() {
   brew install --cask emacs-mac
 
   msg_status "Installing necessary fonts"
-  brew tap homebrew/cask-fonts
   brew install font-fira-code font-inconsolata font-hack
 
   msg_status "Installing necessary brew packages"
