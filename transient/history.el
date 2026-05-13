@@ -5,4 +5,6 @@
  (magit-ediff nil)
  (magit-log
   ("-n256" "--graph" "--decorate"))
- (magit-push nil))
+ (magit-push nil)
+ (magit-rebase
+  ("--autostash")))

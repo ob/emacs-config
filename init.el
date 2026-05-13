@@ -19,7 +19,6 @@
 (require 'init-company-mode)
 (require 'init-git)
 (require 'init-ediff)
-;(require 'init-jira)
 (require 'init-ob)
 
 ;; Fix environment
@@ -32,29 +31,12 @@
 (require 'init-go)
 (require 'init-python)
 (require 'init-ruby)
-(require 'init-rust)
+;;(require 'init-rust)
 (require 'init-swift)
 ;; C++ is special
 ;; This next section from: https://tuhdo.github.io/c-ide.html
 (require-package 'use-package)
 (setq use-package-always-ensure t)
-(add-to-list 'load-path "~/.emacs.d/c++")
-(require 'setup-general)
-(if (version< emacs-version "24.4")
-    (require 'setup-ivy-counsel)
-  (require 'setup-helm)
-  (require 'setup-helm-gtags))
-;; (require 'setup-ggtags)
-(require 'setup-cedet)
-(require 'setup-editing)
-
-(use-package undo-tree
-  :ensure t
-  :init
-  (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo-tree-history/")))
-  (setq undo-tree-auto-save-history t)
-  :config
-  (global-undo-tree-mode 1))
 
 ;; Save autosaves to a consistent directory
 (setq auto-save-file-name-transforms
@@ -65,20 +47,64 @@
 (setq auto-save-timeout 20)   ; seconds idle before autosave
 (setq auto-save-interval 200) ; keystrokes before autosave
 
+;; Persist file-less buffers across sessions in a stable location,
+;; so a reboot doesn't lose them (macOS wipes /var/folders/.../T/).
+(defvar scratch-buffer-dir
+  (expand-file-name "scratch-buffers/" user-emacs-directory)
+  "Directory where file-less buffers are auto-saved and restored from.")
+(make-directory scratch-buffer-dir t)
+
 (defun sanitize-buffer-name (name)
   "Return a safe filename based on buffer NAME."
   (replace-regexp-in-string "[^a-zA-Z0-9_-]" "_" name))
 
-;; Auto-save even for new unnamed buffers
-(defun force-buffer-auto-save ()
-  "Enable autosaving for buffers with no associated file, using a temp file named after the buffer."
-  (unless buffer-file-name
-    (let* ((safe-name (sanitize-buffer-name (buffer-name)))
-           (tmpfile (make-temp-file (concat "emacs-unsaved-" safe-name "-"))))
-      (setq buffer-file-name tmpfile)))
-  (auto-save-mode 1))
+(defun scratch-buffer-skip-p (buf)
+  "Return non-nil for transient/system buffers that should not be persisted."
+  (let ((n (buffer-name buf)))
+    (or (string-prefix-p " " n)
+        (string-match-p
+         "\\` ?\\*\\(Minibuf\\|Echo\\|Messages\\|Completions\\|Help\\|Warnings\\|Backtrace\\|Compile-Log\\|tramp\\|scratch\\|Async-native-compile-log\\|Customize\\)"
+         n)
+        (memq (buffer-local-value 'major-mode buf)
+              '(dired-mode magit-status-mode magit-log-mode
+                magit-diff-mode magit-process-mode
+                vterm-mode shell-mode eshell-mode term-mode
+                comint-mode special-mode help-mode
+                Info-mode messages-buffer-mode)))))
 
-(add-hook 'after-change-major-mode-hook #'force-buffer-auto-save)
+(defun save-scratch-buffers ()
+  "Persist every file-less, non-skip buffer's content into `scratch-buffer-dir'.
+Replaces whatever was previously persisted, so deleted buffers don't
+keep coming back."
+  (when (file-directory-p scratch-buffer-dir)
+    (dolist (f (directory-files scratch-buffer-dir t "\\`[^.]"))
+      (unless (file-directory-p f)
+        (ignore-errors (delete-file f)))))
+  (dolist (b (buffer-list))
+    (with-current-buffer b
+      (when (and (not buffer-file-name)
+                 (not (scratch-buffer-skip-p b))
+                 (> (buffer-size) 0))
+        (let ((path (expand-file-name
+                     (sanitize-buffer-name (buffer-name))
+                     scratch-buffer-dir)))
+          (ignore-errors
+            (write-region (point-min) (point-max) path nil 'silent)))))))
+
+(add-hook 'kill-emacs-hook #'save-scratch-buffers)
+
+(defun restore-scratch-buffers ()
+  "Recreate buffers from files in `scratch-buffer-dir'."
+  (when (file-directory-p scratch-buffer-dir)
+    (dolist (f (directory-files scratch-buffer-dir t "\\`[^.]"))
+      (unless (file-directory-p f)
+        (let ((name (file-name-nondirectory f)))
+          (with-current-buffer (get-buffer-create name)
+            (when (zerop (buffer-size))
+              (insert-file-contents f))
+            (set-buffer-modified-p nil)))))))
+
+(add-hook 'emacs-startup-hook #'restore-scratch-buffers)
 
 ;; Save local customizations in a per-machine file
 (setq custom-file "~/.emacs-custom.el")

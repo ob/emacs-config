@@ -15,3 +15,4 @@ semanticdb
 /.emacs.desktop
 /.emacs.desktop.lock
 auto-save
+scratch-buffers/
