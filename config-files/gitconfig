@@ -34,14 +34,15 @@
 	set-parent = town set-parent
 	ship = town ship
 	sync = town sync
+	wt = "!f() { git worktree add \"../worktrees/$1\" \"${@:2}\"; }; f"
 [core]
-    excludesfile = /Users/obonilla/.gitignore
+    excludesfile = /Users/ob/.gitignore
 [push]
     followTags = true
 	default = current
 	autoSetupRemote = true
 [pull]
-	rebase = false
+	rebase = true
 [includeIf "gitdir:~/o/"]
     path = .gitconfig-opensource
 [includeIf "gitdir:~/r/"]
@@ -50,34 +51,23 @@
     path = .gitconfig-microsoft
 [includeIf "gitdir:~/p/"]
     path = .gitconfig-opensource
+[includeIf "gitdir:~/github.*.apple.com/"]
+    path = .gitconfig-apple
 [diff]
     tool = opendiff
     wsErrorHighlight = all
 [receive]
     denyCurrentBranch = warn
 [http]
-	cookiefile = /Users/obonilla/.gitcookies
+	cookiefile = /Users/ob/.gitcookies
 [init]
 	defaultBranch = main
 [gc]
 	auto = 0
 [fetch]
 	showForcedUpdates = true
-[scalar]
-	repo = /Users/obonilla/r/test-macrorepo-tools
-	repo = /Users/obonilla/mr/src
-	repo = /Users/obonilla/mr/tools
-	repo = /Users/obonilla/mr/base
-	repo = /Users/obonilla/r/test-macrorepo-60pct
-[maintenance]
-	repo = /Users/obonilla/r/test-macrorepo-tools
-	repo = /Users/obonilla/mr/src
-	repo = /Users/obonilla/mr/tools
-	repo = /Users/obonilla/mr/base
-	repo = /Users/obonilla/r/test-macrorepo-60pct
 [credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper = osxkeychain
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 [filter "lfs"]

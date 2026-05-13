@@ -21,3 +21,6 @@ alias rvm-restart="rvm_reload_flag=1 source "\""$HOME/.rvm/scripts/rvm"\"""
 alias vi=/Applications/MacVim.app/Contents/bin/vim
 alias k=kubectl
 alias ci="code-insiders"
+alias k="kubectl"
+alias dri='docker run --platform linux/amd64 -it --entrypoint=""'
+alias bazel='bazelw'

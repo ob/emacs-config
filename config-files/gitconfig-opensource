@@ -2,4 +2,4 @@
   email = 6f6231@gmail.com
   name = Oscar Bonilla
 [core]
-  sshCommand = "ssh -i /Users/obonilla/.ssh/github_linkedin"
+  sshCommand = "ssh -i /Users/ob/.ssh/id_ed25519"
