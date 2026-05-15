@@ -23,4 +23,3 @@ alias k=kubectl
 alias ci="code-insiders"
 alias k="kubectl"
 alias dri='docker run --platform linux/amd64 -it --entrypoint=""'
-alias bazel='bazelw'
