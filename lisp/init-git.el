@@ -7,5 +7,7 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(require 'init-magit-ediff-walk)
+
 (provide 'init-git)
 ;;; init-git ends here
