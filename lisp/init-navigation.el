@@ -3,23 +3,29 @@
 ;;; Code:
 
 (require 'init-elpa)
-(require 'ido)
 (require 'recentf)
-(require-package 'ido-completing-read+)
-(require-package 'smex)
+(require-package 'vertico)
+(require-package 'orderless)
+(require-package 'marginalia)
 (require-package 'projectile)
 
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (recentf-mode 1)
 (setq recentf-max-menu-items 40)
 
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-use-filename-at-point nil)
-(setq ido-auto-merge-work-directories-length -1)
-(setq ido-use-virtual-buffers t)
+;; Vertico: vertical completion UI for every `completing-read'.
+(vertico-mode 1)
 
-;;(ido-ubiquitous-mode 1)
+;; Orderless: space-separated, any-order matching.
+(setq completion-styles '(orderless basic)
+      completion-category-defaults nil
+      completion-category-overrides '((file (styles partial-completion))))
+
+;; Marginalia: rich annotations in the minibuffer.
+(marginalia-mode 1)
+
+;; Persist minibuffer history so frequently-used commands sort first.
+(savehist-mode 1)
 
 ;; Shows a list of buffers
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -85,10 +91,6 @@
   (set-selective-display (if selective-display nil 1)))
 (global-set-key [f2] 'toggle-selective-display)
 
-
-(setq smex-save-file (concat user-emacs-directory ".smex-items"))
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
 
 (projectile-global-mode)
 
