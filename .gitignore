@@ -9,6 +9,8 @@ projectile.cache
 auto-save-list
 backups
 elpa/
+eln-cache/
+*.elc
 eshell
 semanticdb
 /ede-projects.el
@@ -16,3 +18,13 @@ semanticdb
 /.emacs.desktop.lock
 auto-save
 scratch-buffers/
+
+# Runtime state: records every file/buffer/command name visited, which
+# leaks work-machine paths and project names.  Never publish.
+/history
+/transient/
+
+# Local-only, unpublished config (machine- or employer-specific).
+/lisp/init-gptel.el
+/lisp/init-gptel-mcp.el
+/lisp/init-local.el

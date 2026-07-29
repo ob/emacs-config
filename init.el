@@ -21,17 +21,18 @@
 (require 'init-ediff)
 (require 'init-ob)
 
-;; Fix environment
-(require-package 'exec-path-from-shell)
-(when (memq window-system '(mac ns x))
-  (exec-path-from-shell-initialize))
+;; Local-only, untracked (see .gitignore): LLM client and MCP server
+;; config, which carry machine- and employer-specific endpoints.  Loaded
+;; if present, skipped silently otherwise so a fresh clone still starts.
+(require 'init-gptel nil t)
+(require 'init-gptel-mcp nil t)
+(require 'init-local nil t)
 
 ;; Languages
 (require 'init-groovy)
 (require 'init-go)
 (require 'init-python)
 (require 'init-ruby)
-;;(require 'init-rust)
 (require 'init-swift)
 ;; C++ is special
 ;; This next section from: https://tuhdo.github.io/c-ide.html
