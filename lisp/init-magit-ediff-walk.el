@@ -1,8 +1,9 @@
 ;;; init-magit-ediff-walk.el --- Walk all files in a commit via ediff -*- lexical-binding: t; -*-
 ;;; Commentary:
 ;;
-;; Provides three entry points, surfaced in magit's `E' transient as `W':
+;; Provides four entry points, surfaced in magit's `E' transient as `W'/`R':
 ;;   `ob/magit-ediff-commit-walk' — walk every file in a commit.
+;;   `ob/magit-ediff-range-walk' — walk every file changed between two revs.
 ;;   `ob/magit-ediff-worktree-walk' — walk every working-tree change vs HEAD.
 ;;   `ob/magit-ediff-walk-dwim' — pick whichever fits the current magit context.
 ;;
@@ -50,6 +51,22 @@ Lets the per-session quit hook distinguish programmatic from manual quits.")
     (unless files (user-error "No changed files in %s" rev))
     (setq ob/ediff-walk-state
           (list :rev rev :parent parent :files files
+                :index 0 :direction 'forward))
+    (ob/ediff-walk--start)))
+
+;;;###autoload
+(defun ob/magit-ediff-range-walk (base head)
+  "Walk every file changed between BASE and HEAD with ediff.
+Accepts either two separate revs or a single `A..B' string for BASE."
+  (interactive
+   (let ((input (magit-read-branch-or-commit "Walk range (rev or A..B)")))
+     (if (string-match "\\`\\(.+?\\)\\.\\.\\(.+\\)\\'" input)
+         (list (match-string 1 input) (match-string 2 input))
+       (list input (magit-read-branch-or-commit "...to" "HEAD")))))
+  (let ((files (ob/ediff-walk--changed-files base head)))
+    (unless files (user-error "No changed files between %s and %s" base head))
+    (setq ob/ediff-walk-state
+          (list :rev head :parent base :files files
                 :index 0 :direction 'forward))
     (ob/ediff-walk--start)))
 
@@ -235,14 +252,19 @@ Lets the per-session quit hook distinguish programmatic from manual quits.")
   (message "%s" msg))
 
 ;; Surface in magit's E transient as `E W' (capital — `w' is taken by
-;; magit-ediff's own "Show worktree").
+;; magit-ediff's own "Show worktree"). `E R' walks an arbitrary range.
 (with-eval-after-load 'magit-ediff
   (when (fboundp 'transient-append-suffix)
     (unless (ignore-errors (transient-get-suffix 'magit-ediff "W"))
       (ignore-errors
         (transient-append-suffix 'magit-ediff "s"
           '("W" "Walk (commit at point or worktree vs HEAD)"
-            ob/magit-ediff-walk-dwim))))))
+            ob/magit-ediff-walk-dwim))))
+    (unless (ignore-errors (transient-get-suffix 'magit-ediff "R"))
+      (ignore-errors
+        (transient-append-suffix 'magit-ediff "W"
+          '("R" "Walk range (A..B)"
+            ob/magit-ediff-range-walk))))))
 
 (provide 'init-magit-ediff-walk)
 ;;; init-magit-ediff-walk.el ends here

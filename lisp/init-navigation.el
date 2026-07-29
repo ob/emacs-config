@@ -8,6 +8,7 @@
 (require-package 'orderless)
 (require-package 'marginalia)
 (require-package 'projectile)
+(require-package 'consult)
 
 (setq recentf-save-file (concat user-emacs-directory ".recentf"))
 (recentf-mode 1)
@@ -93,6 +94,30 @@
 
 
 (projectile-global-mode)
+
+;; Faster indexing on large repos: defer to `git ls-files' / `fd' rather
+;; than walking the tree in elisp, and cache the result so repeated
+;; lookups in the same project are instant.
+(setq projectile-indexing-method 'alien
+      projectile-enable-caching  t
+      projectile-sort-order      'recently-active
+      projectile-completion-system 'default) ; let vertico handle the UI
+
+;; "Do what I mean" find-file: project-wide fuzzy when inside a project,
+;; standard find-file otherwise.  Bound to C-x C-f to reclaim the muscle
+;; memory.
+(defun ob/find-file-dwim ()
+  "Fuzzy-find across the current project, falling back to `find-file'."
+  (interactive)
+  (if (and (fboundp 'projectile-project-p) (projectile-project-p))
+      (projectile-find-file)
+    (call-interactively #'find-file)))
+
+(global-set-key (kbd "C-x C-f") #'ob/find-file-dwim)
+(global-set-key (kbd "C-x f")   #'find-file) ; escape hatch to plain find-file
+(global-set-key (kbd "C-x b")   #'consult-buffer)
+(global-set-key (kbd "M-s r")   #'consult-ripgrep)
+(global-set-key (kbd "M-g g")   #'consult-goto-line)
 
 ;; Enable move point from window to window using Shift and the arrow keys
 (windmove-default-keybindings)
