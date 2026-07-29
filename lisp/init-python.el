@@ -3,7 +3,6 @@
 ;;; Code:
 
 (require 'init-elpa)
-(require-package 'better-defaults)
 (require-package 'elpy)
 (require-package 'flycheck)
 

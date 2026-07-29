@@ -3,10 +3,6 @@
 ;;; Code:
 (require 'init-elpa)
 (require-package 'color-theme-sanityinc-tomorrow)
-(require-package 'atom-one-dark-theme)
-(require-package 'golden-ratio)
-
-(require 'golden-ratio)
 
 (setq inhibit-startup-message t)
 (menu-bar-mode -1)
@@ -25,16 +21,12 @@
       apropos-do-all t
       mouse-yank-at-point t)
 
-;; (load-theme 'atom-one-dark t)
 (load-theme 'sanityinc-tomorrow-day t)
 
 (blink-cursor-mode 0)
 (setq-default cursor-type 'box)
 (set-cursor-color "#cccccc")
 (setq ring-bell-function 'ignore)
-
-;; Not sure I like it
-;; (golden-ratio-mode 1)
 
 (provide 'init-ui)
 ;;; init-ui ends here
