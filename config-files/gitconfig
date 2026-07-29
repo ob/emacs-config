@@ -53,6 +53,11 @@
     path = .gitconfig-opensource
 [includeIf "gitdir:~/github.*.apple.com/"]
     path = .gitconfig-apple
+; URL rewrites have to load unconditionally: a gitdir-conditional include
+; does not apply at clone time, when the target tree does not exist yet.
+; Kept out of this file because it is published.
+[include]
+    path = ~/.gitconfig-url-remaps
 [diff]
     tool = opendiff
     wsErrorHighlight = all
